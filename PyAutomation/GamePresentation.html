@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Farm Simulator - Présentation</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #2b2b2b;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .cover {
+    text-align: center;
+    padding-top: 40px;
+  }
+  .cover h1 {
+    font-size: 42px;
+    color: #2e7d32;
+    margin-bottom: 0;
+  }
+  .cover .emoji { font-size: 60px; }
+  .cover .subtitle {
+    font-size: 18px;
+    color: #555;
+    margin-top: 6px;
+  }
+  .cover img {
+    width: 100%;
+    max-width: 560px;
+    border: 4px solid #2e7d32;
+    border-radius: 8px;
+    margin: 24px 0;
+  }
+  .badge-row { margin-top: 10px; }
+  .badge {
+    display: inline-block;
+    background: #2e7d32;
+    color: white;
+    padding: 4px 14px;
+    border-radius: 14px;
+    font-size: 12px;
+    margin: 3px;
+  }
+  h2 {
+    color: #2e7d32;
+    border-bottom: 2px solid #a5d6a7;
+    padding-bottom: 4px;
+    margin-top: 34px;
+    font-size: 22px;
+    page-break-after: avoid;
+  }
+  h3 { color: #33691e; margin-top: 18px; font-size: 16px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px 0; font-size: 13px; }
+  th, td { border: 1px solid #c8e6c9; padding: 7px 10px; text-align: left; }
+  th { background: #e8f5e9; color: #1b5e20; }
+  tr:nth-child(even) { background: #f6fbf6; }
+  .controls-table td:first-child { font-family: Consolas, monospace; font-weight: bold; color: #1b5e20; white-space: nowrap; }
+  ul { margin: 6px 0; padding-left: 22px; }
+  li { margin-bottom: 4px; }
+  .grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .card {
+    background: #f6fbf6;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+  .card h3 { margin-top: 0; }
+  .footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #888;
+    font-size: 11px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
+  .page-break { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="emoji">🌾</div>
+  <h1>FARM SIMULATOR</h1>
+  <div class="subtitle">Un jeu de gestion de ferme en vue du dessus</div>
+  <div class="badge-row">
+    <span class="badge">Unreal Engine 5.7</span>
+    <span class="badge">100% C++</span>
+    <span class="badge">Mono-joueur</span>
+    <span class="badge">PC (Windows)</span>
+  </div>
+  <img src="PROMO_IMAGE" alt="Capture d'écran du jeu">
+</div>
+
+<div class="page-break"></div>
+
+<h2>🎯 Concept</h2>
+<p>
+Farm Simulator est un jeu de gestion de ferme vu du dessus, inspiré de titres comme
+<em>Stardew Valley</em>. Le joueur incarne un(e) fermier(ère) qui doit faire fructifier
+son exploitation en une année (4 saisons) : labourer la terre, planter des graines,
+attendre la récolte, vendre les produits, et réinvestir pour agrandir sa fortune.
+</p>
+<p><strong>Objectif :</strong> atteindre <strong>5000 $</strong> avant la fin de la
+première année (l'argent de départ est de 1000 $).</p>
+
+<h2>🌱 Boucle de gameplay</h2>
+<p style="text-align:center; font-size:16px; font-weight:bold; color:#1b5e20;">
+  Labourer&nbsp;→&nbsp;Planter&nbsp;→&nbsp;Attendre&nbsp;→&nbsp;Récolter&nbsp;→&nbsp;Vendre&nbsp;→&nbsp;Réinvestir
+</p>
+
+<div class="grid2">
+  <div class="card">
+    <h3>📅 Calendrier</h3>
+    <ul>
+      <li>4 saisons : Printemps, Été, Automne, Hiver</li>
+      <li>30 jours par saison (120 jours / année)</li>
+      <li>Cycle jour/nuit avec éclairage dynamique</li>
+      <li>Vitesse de jeu réglable : x1 / x2 / x4</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>🌦️ Multiplicateurs de pousse</h3>
+    <ul>
+      <li>Printemps : x1.2 (pousse rapide)</li>
+      <li>Été : x1.5 (pousse la plus rapide)</li>
+      <li>Automne : x1.0 (normal)</li>
+      <li>Hiver : x0.0 (rien ne pousse)</li>
+    </ul>
+  </div>
+</div>
+
+<h2>🥕 Les 6 cultures</h2>
+<table>
+  <tr><th>Culture</th><th>Coût de la graine</th><th>Prix de vente</th><th>Jours / étape de pousse</th></tr>
+  <tr><td>🌾 Blé</td><td>15 $</td><td>35 $</td><td>4 jours</td></tr>
+  <tr><td>🥕 Carotte</td><td>20 $</td><td>50 $</td><td>5 jours</td></tr>
+  <tr><td>🥔 Pomme de terre</td><td>30 $</td><td>70 $</td><td>6 jours</td></tr>
+  <tr><td>🌽 Maïs</td><td>40 $</td><td>110 $</td><td>7 jours</td></tr>
+  <tr><td>🍓 Fraise</td><td>55 $</td><td>150 $</td><td>8 jours</td></tr>
+  <tr><td>🎃 Citrouille</td><td>70 $</td><td>220 $</td><td>9 jours</td></tr>
+</table>
+<p>Chaque culture pousse à travers <strong>5 stades visuels distincts</strong> avec de
+vrais modèles 3D (et non de simples formes qui grossissent) : le maïs, par exemple,
+passe par 4 modèles de maïs réellement différents à mesure qu'il mûrit.</p>
+
+<h2>🎮 Contrôles (clavier AZERTY)</h2>
+<table class="controls-table">
+  <tr><th>Touche</th><th>Action</th></tr>
+  <tr><td>Z Q S D</td><td>Se déplacer</td></tr>
+  <tr><td>E</td><td>Interagir (labourer / planter / récolter / vendre)</td></tr>
+  <tr><td>C</td><td>Changer la culture sélectionnée</td></tr>
+  <tr><td>1 / 2 / 3</td><td>Vitesse de jeu x1 / x2 / x4</td></tr>
+  <tr><td>F5</td><td>Sauvegarder la partie</td></tr>
+  <tr><td>F9</td><td>Charger la partie</td></tr>
+  <tr><td>R</td><td>Rejouer (après la fin de l'année)</td></tr>
+</table>
+<p>Un rappel permanent de ces touches est affiché en bas de l'écran pendant toute la partie.</p>
+
+<div class="page-break"></div>
+
+<h2>💾 Sauvegarde</h2>
+<ul>
+  <li><strong>Sauvegarde automatique</strong> chaque nouveau jour en jeu.</li>
+  <li><strong>Sauvegarde / chargement manuels</strong> via F5 / F9.</li>
+  <li>Conserve : argent, calendrier, inventaire, état de chaque parcelle (labourée,
+      culture plantée, stade de pousse).</li>
+</ul>
+
+<h2>🏆 Fin de partie</h2>
+<p>
+À la fin de la première année (jour 120), un écran de bilan s'affiche indiquant
+si l'objectif de 5000 $ a été atteint (Victoire) ou non. Le joueur peut alors
+recommencer une nouvelle partie avec la touche R.
+</p>
+
+<h2>🛠️ Technique</h2>
+<div class="grid2">
+  <div class="card">
+    <h3>Moteur & architecture</h3>
+    <ul>
+      <li>Unreal Engine 5.7</li>
+      <li>100% code C++ (aucun Blueprint à maintenir)</li>
+      <li>Monde entièrement généré par code au lancement</li>
+      <li>Interface utilisateur (HUD) construite en code (UMG/Slate)</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Assets</h3>
+    <ul>
+      <li>Modèles 3D : packs Kenney "Nature Kit" / "Food Kit" (CC0)</li>
+      <li>Musique d'ambiance : piste CC0 (OpenGameArt)</li>
+      <li>Décor : clôtures, arbres, fleurs, rochers</li>
+    </ul>
+  </div>
+</div>
+
+<h2>📂 Code source</h2>
+<p>Le projet est versionné sur GitHub :
+<strong>https://github.com/CocoB1103/FarmSimulator</strong></p>
+<p>Voir <code>DEVELOPMENT_NOTES.md</code> à la racine du dépôt pour le détail des
+choix techniques et des problèmes résolus pendant le développement.</p>
+
+<div class="footer">
+  Farm Simulator — Document généré automatiquement — Octobre 2026
+</div>
+
+</body>
+</html>
